@@ -5,16 +5,18 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 @Table(name = "ORDERS") //데이터베이스에 ORDER라는 예약어가 있어서 보통 ORDERS로 테이블 명을 바꿈
 public class Order {
     @Id@GeneratedValue
     private Long id;
-    @ManyToOne
+    @ManyToOne(fetch = LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "MEMBER_ID") //객체의 참조와 테이블의 외래 키를 매핑, ORDER의 MEMBER와 오더테이블에 멤버 id를 매핑
     private Member member;
 
-    @OneToOne
+    @OneToOne(fetch = LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "DELIVERY_ID") //외래키 컬럼의 이름을 DELIVERT_ID로 지정
     private Delivery delivery;
 
