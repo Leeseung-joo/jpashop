@@ -1,11 +1,12 @@
 package org.example.domain;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Member {
+public class Member extends BaseEntity {
     @Id@GeneratedValue
     private Long id;
 
@@ -44,6 +45,11 @@ public class Member {
     @ManyToOne
     @JoinColumn(name = "TEAM_ID")
     private Team team;
+
+    private String createdBy;
+    private LocalDateTime createdDate;   //이 속성들을 상속받아 쓰고 싶음
+    private String LastModifiyedBy;
+    private LocalDateTime lastModifiedDate;
 
     public Long getId() {
         return id;
