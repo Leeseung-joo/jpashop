@@ -8,19 +8,70 @@ import java.util.List;
 @Entity
 public class Member extends BaseEntity {
     @Id@GeneratedValue
+    @Column(name = "MEMBER_ID")
     private Long id;
-
+    @Column(name = "USERNAME")
     private String name;
-    private String city;
-    private String street;
-    private String zipcode;
 
-    public String getZipcode() {
-        return zipcode;
+    @Embedded //기간
+    private Period workPeriod;
+    @Embedded //주소
+    private Address homeAddress;
+
+    public Period getWorkPeriod() {
+        return workPeriod;
     }
 
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
+    public void setWorkPeriod(Period workPeriod) {
+        this.workPeriod = workPeriod;
+    }
+
+    public Address getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(Address homeAddress) {
+        this.homeAddress = homeAddress;
+    }
+
+    @Override
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    @Override
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    @Override
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    @Override
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    @Override
+    public String getLastModifiyedBy() {
+        return LastModifiyedBy;
+    }
+
+    @Override
+    public void setLastModifiyedBy(String lastModifiyedBy) {
+        LastModifiyedBy = lastModifiyedBy;
+    }
+
+    @Override
+    public LocalDateTime getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    @Override
+    public void setLastModifiedDate(LocalDateTime lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     public List<Order> getOrders() {
@@ -67,21 +118,7 @@ public class Member extends BaseEntity {
         this.name = name;
     }
 
-    public String getCity() {
-        return city;
-    }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
 
     public String getZipCode() {
         return zipCode;
