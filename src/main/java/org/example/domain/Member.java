@@ -20,6 +20,8 @@ public class Member extends BaseEntity {
     @Embedded //주소
     private Address homeAddress;
 
+    private  MemberType type;
+
     @ElementCollection
     @CollectionTable(name = "FAVORITE_FOOD", joinColumns = @JoinColumn(name = "MEMBER_ID"))
     private Set<String> favoriteFoods = new HashSet<>();
